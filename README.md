@@ -1,19 +1,14 @@
 # リタリコ課題1
 
-* Ruby version
+* todoタスクリストとdoneタスクリストを見れる
 
-* System dependencies
+* todoタスクを追加できる
+** todoタスクには担当者名と内容を記入できる
 
-* Configuration
+* タスクの担当者名と内容を変更できる
 
-* Database creation
+* todoタスクをdoneタスクに変更できる
 
-* Database initialization
+* doneタスクをtodoタスクに変更できる
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 作成･更新処理の成功･失敗を示すflashメッセージが表示される
