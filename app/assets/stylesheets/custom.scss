@@ -1,0 +1,62 @@
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
+
+* {
+    box-sizing: border-box;
+    word-break: break-word
+}
+
+.index-page__form {
+    margin-bottom: 30px
+}
+
+.index-page__tasks {
+    display: flex;
+    justify-content: space-between
+}
+
+.index-page__task-list {
+    width: 49%;
+    border: 1px solid #dddddd;
+    padding: 15px
+}
+
+.task-list {
+    background: #eeeeee;
+    padding: 15px
+}
+
+.task-list__item {
+    padding: 15px;
+    border-radius: 4px;
+    background: #ffffff
+}
+
+.task-list__item:not(:last-of-type) {
+    margin-bottom: 15px
+}
+
+.task__name {
+    font-size: 14px;
+    margin-bottom: 15px
+}
+
+.task__body {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px
+}
+
+.task__buttons {
+    display: flex;
+    border-top: 1px solid #eeeeee;
+    padding-top: 15px
+}
+
+.task__edit {
+    width: 50%
+}
+
+.task__toggle {
+    width: 50%
+}

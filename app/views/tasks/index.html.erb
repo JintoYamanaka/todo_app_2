@@ -1,29 +1,50 @@
-<p id="notice"><%= notice %></p>
-
 <h1>TODOアプリ</h1>
+<div class="index-page">
+  <%= render 'form', task: @task %>
+  <div class="index-page__tasks">
+    
+    <div class="index-page__task-list">
+      <h2>TODO</h2>
+      <div class="task-list">
+        <div class="task-list__item task">  
+          <% @task_todo.each do |task| %>
+            <div class="task__name"><%= task.name %></div>
+            <div class="task__body"><%= task.body %></div>
+            <div class="task__buttons">
+              <div class="task__edit">
+                <%= link_to '編集', edit_task_path(task) %>
+              </div>
+              <div class="task__toggle">
+                <%= link_to 'DONEにする', tasks_path %>
+                <!--<a rel="nofollow" data-method="patch" href="/tasks/16/toggle_status">DONEにする</a>-->
+              </div>          
+            </div>
+            <!--<td><%#= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="index-page__task-list">
+      <h2>DONE</h2>
+      <div class="task-list">
+          <div class="task-list__item task">
+          <% @task_done.each do |task| %>
+            <div class="task__name"><%= task.name %></div>
+            <div class="task__body"><%= task.body %></div>
+            <div class="task__buttons">
+              <div class="task__edit">
+                <%= link_to '編集', edit_task_path(task) %>
+              </div>
+              <div class="task__toggle">
+                <%= link_to 'TODOにする', tasks_path %>
+              </div>          
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.body %></td>
-        <!--<td><%#= link_to 'Show', task %></td>-->
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <!--<td><%#= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Task', new_task_path %>
+<%#= link_to 'New Task', new_task_path %>

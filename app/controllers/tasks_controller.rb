@@ -5,6 +5,9 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
+    @task_todo = Task.where(flag: 0)
+    @task_done = Task.where(flag: 1)
+    @task = Task.new
   end
 
   # GET /tasks/1
@@ -28,7 +31,8 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        # format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to tasks_path, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -60,6 +64,13 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def change_done
+    
+  end
+  
+  def change_todo
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,4 +82,8 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:name, :body)
     end
+    
+    #   def task_params 
+    #     params.require(:task).permit(:title, :description)
+    #   end
 end
