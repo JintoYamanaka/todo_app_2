@@ -19,7 +19,7 @@
                 <%= link_to '編集', edit_task_path(task) %>
               </div>
               <div class="task__toggle">
-                <%= link_to 'DONEにする', edit_task_path(task), method: :patch  %>
+                <%= link_to 'DONEにする', toggle_status_task_path(task), method: :patch  %>
                 <!--<a rel="nofollow" data-method="patch" href="/tasks/16/toggle_status">DONEにする</a>-->
               </div>          
             </div>
@@ -41,7 +41,7 @@
                 <%= link_to '編集', edit_task_path(task) %>
               </div>
               <div class="task__toggle">
-                <%= link_to 'TODOにする', edit_task_path(task), method: :patch %>
+                <%= link_to 'TODOにする', toggle_status_task_path(task), method: :patch %>
               </div>          
             </div>
           </div>

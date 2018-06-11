@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :tasks
   root 'tasks#index'
-  patch '/tasks/:id/edit', to: 'tasks#toggle_status'
+  patch '/tasks/:id/toggle_status', to: 'tasks#toggle_status', as: :toggle_status_task
 end
 
 

@@ -35,7 +35,8 @@ class TasksController < ApplicationController
         format.html { redirect_to tasks_path, notice: 'success : 作成しました' }
         format.json { render :show, status: :created, location: @task }
       else
-        format.html { render :new }
+        # format.html { render :new }
+        format.html { redirect_to tasks_path, notice: 'error : 作成できませんでした' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
