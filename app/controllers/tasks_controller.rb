@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    # @tasks = Task.all
     @task_todo = Task.where(flag: 0)
     @task_done = Task.where(flag: 1)
     @task = Task.new
@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         # format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.html { redirect_to tasks_path, notice: 'Task was successfully created.' }
+        format.html { redirect_to tasks_path, notice: 'success : 作成しました' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to tasks_path, notice: 'success : 更新しました' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -64,12 +64,15 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def change_done
-    
-  end
-  
-  def change_todo
+
+  def toggle_status
+    @task = Task.find(params[:id])
+    if @task.flag == 0
+      @task.update_attribute(:flag, 1)
+    else
+      @task.update_attribute(:flag, 0)
+    end
+    redirect_to tasks_path, notice: 'success : 更新しました'
   end
 
   private
@@ -80,10 +83,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :body)
+      params.require(:task).permit(:name, :body, :flag)
     end
     
-    #   def task_params 
-    #     params.require(:task).permit(:title, :description)
-    #   end
 end

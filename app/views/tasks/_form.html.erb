@@ -17,6 +17,6 @@
     <%= form.label :body %>
     <%= form.text_field :body, id: :task_body %>
 
-    <%= form.submit "作成"%>
+    <%= form.submit yield(:name)%>
 
 <% end %>
