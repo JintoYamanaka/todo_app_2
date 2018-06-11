@@ -66,6 +66,7 @@ class TasksController < ApplicationController
     end
   end
 
+  # PATCH /tasks/1/toggle_status
   def toggle_status
     @task = Task.find(params[:id])
     if @task.flag == 0
