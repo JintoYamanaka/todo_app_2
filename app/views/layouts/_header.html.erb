@@ -1,0 +1,15 @@
+<header class="navbar navbar-inverse">
+  <%= link_to "TODOアプリ", root_path, id: "logo" %>
+  <nav>
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li><%= link_to "ユーザー名：#{current_user.name}", '#' %></li>
+        <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "ログイン", login_path %></li>
+        <li><%= link_to "新規ユーザー登録", signup_path %></li>
+      <% end %>
+      <li><%= link_to "ユーザー登録者一覧", users_path %></li>
+    </ul>
+  </nav>
+</header>

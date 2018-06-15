@@ -5,6 +5,7 @@
 //   font-family: verdana, arial, helvetica, sans-serif;
 //   font-size: 13px;
 //   line-height: 18px;
+//   padding-top: 60px;
 // }
 
 // p, ol, ul, td {
@@ -32,13 +33,22 @@
 //   }
 // }
 
-// th {
-//   padding-bottom: 5px;
-// }
+table {
+  margin: auto;
+  width: 350px;
+}
 
-// td {
-//   padding: 0 5px 7px;
-// }
+th {
+  padding-bottom: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+td {
+  padding: 0 5px 7px;
+  font-size: 16px;
+  text-align: center;
+}
 
 // div {
 //   &.field, &.actions {
@@ -46,9 +56,9 @@
 //   }
 // }
 
-// #notice {
-//   color: green;
-// }
+#notice {
+  color: green;
+}
 
 // .field_with_errors {
 //   padding: 2px;
