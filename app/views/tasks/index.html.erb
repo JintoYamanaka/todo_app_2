@@ -10,47 +10,49 @@
   
   <div class="index-page__task-list">
     <h2>TODO</h2>
-    <div class="task-list">
-      <% @task_todo.each do |task| %>
-        <div class="task-list__item task">  
-          <div class="task__name">Name：<%= task.name %></div>
-          <div class="task__body">Body：<%= task.body %></div>
-          <% if logged_in? %>
-            <div class="task__buttons">
-              <div class="task__edit">
-                <%= link_to '編集', edit_task_path(task) %>
-                <%= link_to 'Destroy', task_path(task), method: :delete %>
-              </div>
-              <div class="task__toggle">
-                <%= link_to 'DONEにする', toggle_status_task_path(task), method: :patch  %>
-              </div>          
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <% @task_todo.each do |task| %>
+      <table class='task_table'>
+        <tr>
+          <th>Name</th><td><%= task.name %></td>
+        </tr>
+        <tr>
+          <th>Body</th><td><%= task.body %></td>
+        </tr>
+        <% if logged_in? %>
+          <tr>
+            <td colspan='2' class="task_buttons">
+              <span><%= link_to '編集', edit_task_path(task), class: "btn btn-default btn-sm" %></span>
+              <!--<%= link_to 'Destroy', task_path(task), method: :delete %>-->
+              <span><%= link_to 'DONEにする', toggle_status_task_path(task), method: :patch, 
+                                                                              class: "btn btn-default btn-sm" %></span>
+            </td>
+          </tr>
+        <% end %>
+      </table>       
+    <% end %>
   </div>
   
   <div class="index-page__task-list">
     <h2>DONE</h2>
-    <div class="task-list">
-      <% @task_done.each do |task| %>
-        <div class="task-list__item task">
-          <div class="task__name"><%= task.name %></div>
-          <div class="task__body"><%= task.body %></div>
-          <% if logged_in? %>
-            <div class="task__buttons">
-              <div class="task__edit">
-                <%= link_to '編集', edit_task_path(task) %>
-              </div>
-              <div class="task__toggle">
-                <%= link_to 'TODOにする', toggle_status_task_path(task), method: :patch %>
-              </div>          
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <% @task_done.each do |task| %>
+      <table class='task_table'>
+        <tr>
+          <th>Name</th><td><%= task.name %></td>
+        </tr>
+        <tr>
+          <th>Body</th><td><%= task.body %></td>
+        </tr>
+        <% if logged_in? %>
+          <tr>
+            <td colspan='2' class="task_buttons">
+              <span><%= link_to '編集', edit_task_path(task), class: "btn btn-default btn-sm" %></span>
+              <span><%= link_to 'TODOにする', toggle_status_task_path(task), method: :patch, 
+                                                                              class: "btn btn-default btn-sm" %></span>
+            </td>
+          </tr>
+        <% end %>
+      </table>       
+    <% end %>
   </div>
 </div>
 
