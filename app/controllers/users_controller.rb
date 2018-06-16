@@ -6,8 +6,11 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    # @task_todo = Task.where(flag = '?' and user_id = '?', 0, params[:id])
-    # @task_done = Task.where(flag = '?' and user_id = '?', 1, params[:id])
+    @tasks = @user.tasks  #ユーザーと紐づけられたタスク
+    @task_todo = Task.where("flag = ? and user_id = ?", 0, params[:id])  
+    # @task_todo = @tasks.where(flag:0)  #上に同義
+    @task_done = Task.where("flag = ? and user_id = ?", 1, params[:id]) 
+    # @task_done = @tasks.where(flag: 1)  #上に同義
   end
   
   def new

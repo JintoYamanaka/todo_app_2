@@ -2,7 +2,6 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
-  # GET /tasks.json
   def index
     # @tasks = Task.all
     @task_todo = Task.where(flag: 0)
@@ -11,7 +10,6 @@ class TasksController < ApplicationController
   end
 
   # GET /tasks/1
-  # GET /tasks/1.json
   def show
   end
 
@@ -25,42 +23,34 @@ class TasksController < ApplicationController
   end
 
   # POST /tasks
-  # POST /tasks.json
   def create
-    @task = Task.new(task_params)
-    respond_to do |format|
-      if @task.save
-        flash[:success] = "作成しました"
-        format.html { redirect_to '/' }
-      else
-        # format.html { render :new }
-        flash[:danger] = "作成できませんでした"
-        format.html { redirect_to '/'}
-      end
+    @task_todo = Task.where(flag: 0)
+    @task_done = Task.where(flag: 1)
+    @task = current_user.tasks.build(task_params)
+    if @task.save
+      flash[:success] = "作成しました"
+      redirect_to root_url
+    else
+      # flash[:danger] = "作成できませんでした"
+      render :index
     end
   end
 
   # PATCH/PUT /tasks/1
-  # PATCH/PUT /tasks/1.json
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        # format.html { redirect_to tasks_path, notice: 'success : 更新しました' }
-        flash[:success] = "更新しました"
-        format.html { redirect_to '/'}
-      else
-        format.html { render :edit }
-      end
+    if @task.update(task_params)
+      # format.html { redirect_to tasks_path, notice: 'success : 更新しました' }
+      flash[:success] = "更新しました"
+      redirect_to '/'
+    else
+      render :edit
     end
   end
 
   # DELETE /tasks/1
-  # DELETE /tasks/1.json
   def destroy
     @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-    end
+    redirect_to tasks_url, notice: 'Task was successfully destroyed.' 
   end
 
   # PATCH /tasks/1/toggle_status
@@ -71,7 +61,6 @@ class TasksController < ApplicationController
     else
       @task.update_attribute(:flag, 0)
     end
-    # redirect_to tasks_path, notice: 'success : 更新しました'
     flash[:success] = "更新しました"
     redirect_to '/'
   end

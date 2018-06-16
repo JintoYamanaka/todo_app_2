@@ -3,7 +3,7 @@
   <nav>
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
-        <li><%= link_to "ユーザー名：#{current_user.name}", '#' %></li>
+        <li><%= link_to "ログインユーザー名：#{current_user.name}", user_path(current_user.id) %></li>
         <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "ログイン", login_path %></li>
