@@ -16,10 +16,10 @@
         </div>
       <% end %>
   
-      <%= form.label :name %>
+      <%= form.label :name, "Name（担当者）" %>
       <%= form.text_field :name, class: 'form-control' %>
   
-      <%= form.label :body %>
+      <%= form.label :body, "Body（内容）" %>
       <%= form.text_area :body, class: 'form-control' %>
   
       <!--<%= form.hidden_field :user_id, :value => "#{current_user.id}" %>-->
